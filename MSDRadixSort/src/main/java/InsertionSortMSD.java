@@ -1,3 +1,8 @@
+
+/**
+ * This is a basic implementation of insertion sort.
+ * It does not extend Sort, nor does it employ any optimizations.
+ */
 public class InsertionSortMSD {
 
     public static void sort(String[] a, int lo, int hi, int d) {

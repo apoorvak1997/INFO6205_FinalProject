@@ -1,16 +1,16 @@
+import java.io.*;
+import java.text.CollationKey;
 import java.text.Collator;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 
 import java.text.Collator;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 // Import Pinyin
+import javafx.util.Pair;
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
@@ -24,65 +24,72 @@ public class MSDRadixSort {
      *
      * @param a the array to be sorted.
      */
-    public static void main(String args[])
-    {
-        String[] a={"midnight", "badge", "bag",
-                "worker", "banner", "wander" };
-        String[] c= {
-                "刘持平",
-                "洪文胜",
-                "樊辉辉",
-                "苏会敏",
-                "高民政"};
-        sortchinese();
+    public static void main(String args[]) throws IOException {
+        // Read shuffled chinese
+        String[] shuffledChinese =  readShuffledChinese(PATH+SourceFileName+".txt");
 
-        // pinyin implementation
-        System.out.println("Convert Chinese to Eng Algorithm");
-        String[] convertedNames;
-        convertedNames = convertToPinyin(c);
-        for (int i=0;i<convertedNames.length;i++) {
-            System.out.println(convertedNames[i]);
-        }
+        // Convert Chinese to Pinyin
+        Pair[] pinyinConvertedChinese = convertToPinyinPair(shuffledChinese);
 
-        System.out.println("Our Sorting Algorithm english");
-        sort(convertedNames);
-        for (int i=0;i<convertedNames.length;i++) {
-            System.out.println(convertedNames[i]);
-        }
+        // Sort Pinyin using MSD Radix Sort, In Place sorting
+        msdRadixSortPair(pinyinConvertedChinese);
 
-        // testing
-        System.out.println("Testing---------");
-        String cnStr = "刘持平";
-        System.out.println(toPinYin(cnStr));
-
-
-    }
-    public static String[] convertToPinyin(String[] c){
-        String[] convertedNames = new String[c.length];
-        for (int i=0; i<c.length;i++){
-            convertedNames[i] = toPinYin(c[i]);
-        }
-        return convertedNames;
+        // Write to file
+        writeSortedChinesePair(pinyinConvertedChinese);
     }
 
-    public static void sortchinese()
-    {
-        List<String> list = Arrays.asList(
-                "刘持平",
-                "洪文胜",
-                "樊辉辉",
-                "苏会敏",
-                "高民政");
-        Collator spCollator = Collator.getInstance(Locale.CHINESE);
-        list.sort(spCollator);
-        for(int i=0;i<list.size();i++)
-            System.out.println(list.get(i));
+    private static void writeSortedChinesePair(Pair[] pinyinConvertedChinese) throws FileNotFoundException {
+        PrintWriter out = new PrintWriter(PATH+DestinationFileName+".txt");
 
+        for(int i=0;i<pinyinConvertedChinese.length;i++){
+            out.println(pinyinConvertedChinese[i].getValue());
+        }
+        out.close();
     }
-    public static void sort(String[] a) {
-        int n = a.length;
-        aux = new String[n];
-        sort(a, 0, n, 0);
+
+    static String[] readShuffledChinese(String path) throws IOException {
+        BufferedReader in = null;
+        String[] shuffledChinese  = new String[10];
+        try {
+            in = new BufferedReader(new FileReader(path));
+            String name;
+            int i=0;
+            while ((name = in.readLine()) != null && i!=10) {
+                shuffledChinese[i] = name;
+                i++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+        }
+        return shuffledChinese;
+    }
+
+    public static Pair[] convertToPinyinPair(String[] shuffledChinese){
+        Pair[] pinyinConvertedChinese = new Pair[shuffledChinese.length];
+        for (int i=0; i<shuffledChinese.length;i++){
+            Pair pair = new Pair(toPinYin(shuffledChinese[i]), shuffledChinese[i]);
+            pinyinConvertedChinese[i] = pair;
+        }
+        return pinyinConvertedChinese;
+    }
+
+    public static void sortchinese(String[] s) throws FileNotFoundException {
+        List<String> list = Arrays.asList(s);
+
+//        Collator spCollator = Collator.getInstance(Locale.CHINESE);
+        Collections.sort(list);
+    }
+
+    public static void msdRadixSortPair(Pair[] pinyinConvertedChinese) {
+        int n = pinyinConvertedChinese.length;
+        aux = new Pair[n];
+        sortPair(pinyinConvertedChinese, 0, n, 0);
     }
 
     /**
@@ -94,23 +101,28 @@ public class MSDRadixSort {
      * @param hi the high index (one above the highest actually processed).
      * @param d the number of characters in each String to be skipped.
      */
-    private static void sort(String[] a, int lo, int hi, int d) {
-        if (hi < lo + cutoff) InsertionSortMSD.sort(a, lo, hi, d);
+
+    private static void sortPair(Pair[] a, int lo, int hi, int d) {
+        if (hi <= lo) {
+
+            return;
+        }
         else {
-            int[] count = new int[radix + 2];        // Compute frequency counts.
-            for (int i = lo; i < hi; i++)
-                count[charAt(a[i], d) + 2]++;
+            int[] count = new int[radix + 2];        // Compute frequency counts. 258
+            for (int i = lo; i < hi; i++) {
+                count[charAt(a[i].getKey().toString(), d) + 2]++;
+            }
             for (int r = 0; r < radix + 1; r++)      // Transform counts to indices.
                 count[r + 1] += count[r];
             for (int i = lo; i < hi; i++)     // Distribute.
-                aux[count[charAt(a[i], d) + 1]++] = a[i];
-            // Copy back.
+                aux[count[charAt(a[i].getKey().toString(), d) + 1]++] = (Pair) a[i];
+
             if (hi - lo >= 0) System.arraycopy(aux, 0, a, lo, hi - lo);
-            // Recursively sort for each character value.
+            // Recursively sort for eac
+            // h character value.
             for (int r = 0; r < 256; r++)
-                sort(a, lo + count[r],
+                sortPair(a, lo + count[r],
                         lo + count[r + 1] - 1, d + 1);
-            // TO BE IMPLEMENTED
         }
     }
 
@@ -132,7 +144,7 @@ public class MSDRadixSort {
         HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
         format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
         format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
-        format.setVCharType(HanyuPinyinVCharType.WITH_V);
+//        format.setVCharType(HanyuPinyinVCharType.WITH_V);
         try{
             String[] pinYin = PinyinHelper.toHanyuPinyinStringArray(c, format);
             if(pinYin != null){
@@ -147,6 +159,11 @@ public class MSDRadixSort {
 
     private static final int radix = 256;
     private static final int cutoff = 15;
-    private static String[] aux;       // auxiliary array for distribution
+    private static Pair[] aux;       // auxiliary array for distribution
+    private static String[] aux2;
+    private  static String PATH = "src/main/resource/";
+    private  static String DestinationFileName = "sortedChinese";
+    private  static String SourceFileName = "shuffledChinese";
+
 }
 
