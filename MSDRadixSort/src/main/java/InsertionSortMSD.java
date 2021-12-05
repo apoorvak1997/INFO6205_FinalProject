@@ -1,4 +1,3 @@
-
 /**
  * This is a basic implementation of insertion sort.
  * It does not extend Sort, nor does it employ any optimizations.

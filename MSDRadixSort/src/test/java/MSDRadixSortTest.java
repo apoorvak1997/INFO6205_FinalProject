@@ -24,12 +24,12 @@ public class MSDRadixSortTest {
         };
 
         // Call our MSDRadixSort using Pair
-        Pair[] pinyinConvertedChinese = MSDRadixSort.convertToPinyinPair(shuffledChinese);
+        ChineseToPinyin[] pinyinConvertedChinese = MSDRadixSort.convertToPinyinPair(shuffledChinese);
 
         // take the key form pairs before sorting
         String[] shuffledList = new String[pinyinConvertedChinese.length];
         for(int i=0;i<shuffledList.length;i++){
-            shuffledList[i]= pinyinConvertedChinese[i].getKey().toString();
+            shuffledList[i]= pinyinConvertedChinese[i].getPinyin();
         }
 
         // implement sorting
@@ -38,7 +38,7 @@ public class MSDRadixSortTest {
         // take the key form pairs after sorting
         List<String> sortedList = new ArrayList<>();
         for(int i=0;i<pinyinConvertedChinese.length;i++){
-            sortedList.add(pinyinConvertedChinese[i].getKey().toString());
+            sortedList.add(pinyinConvertedChinese[i].getPinyin());
         }
 
         assertEquals(sortUsingPinyin(shuffledList),sortedList);
@@ -49,12 +49,12 @@ public class MSDRadixSortTest {
         String[] shuffledChinese =  MSDRadixSort.readShuffledChinese("src/test/resource/shuffledChineseTest.txt");
 
         // Call our MSDRadixSort using Pair
-        Pair[] pinyinConvertedChinese = MSDRadixSort.convertToPinyinPair(shuffledChinese);
+        ChineseToPinyin[] pinyinConvertedChinese = MSDRadixSort.convertToPinyinPair(shuffledChinese);
 
         // take the key form pairs before sorting
         String[] shuffledList = new String[pinyinConvertedChinese.length];
         for(int i=0;i<shuffledList.length;i++){
-            shuffledList[i]= pinyinConvertedChinese[i].getKey().toString();
+            shuffledList[i]= pinyinConvertedChinese[i].getPinyin();
         }
         // implement sorting
         MSDRadixSort.msdRadixSortPair(pinyinConvertedChinese);
@@ -62,7 +62,7 @@ public class MSDRadixSortTest {
         // take the key form pairs after sorting
         List<String> sortedList = new ArrayList<>();
         for(int i=0;i<pinyinConvertedChinese.length;i++){
-            sortedList.add(pinyinConvertedChinese[i].getKey().toString());
+            sortedList.add(pinyinConvertedChinese[i].getPinyin());
         }
 
         assertEquals(sortUsingPinyin(shuffledList),sortedList);

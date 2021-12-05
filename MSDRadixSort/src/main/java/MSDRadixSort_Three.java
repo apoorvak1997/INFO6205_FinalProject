@@ -14,11 +14,9 @@ import java.util.Map;
 public class MSDRadixSort_Three {
     private static final int radix = 256;
     private static final int cutoff = 15;
-    private  static String PATH = "src/main/resource/";
+    private  static String PATH = "/Users/apoorvak/Desktop/PSA_SORTS/INFO6205_FinalProject/MSDRadixSort/src/main/resource/";
     private  static String DestinationFileName = "sortedChinese";
     private  static String SourceFileName = "shuffledChinese";
-    private static String[] chineseAux;
-    static Map<String, String> mapping = new HashMap<>();
     private static String[] aux;       // auxiliary array for distribution
 
 
@@ -89,11 +87,10 @@ public class MSDRadixSort_Three {
      * @param hi the high index (one above the highest actually processed).
      * @param d the number of characters in each String to be skipped.
      */
-    public static void sort(String[] a,String[] c) {
+    public static void sort(String[] a) {
         int n = a.length;
         aux = new String[n];
-        chineseAux = new String[n];
-        sort(a, 0, n-1, 0,c);
+        sort(a, 0, n-1, 0);
     }
     /**
      * Sort from a[lo] to a[hi] (exclusive), ignoring the first d characters of each String.
@@ -104,7 +101,7 @@ public class MSDRadixSort_Three {
      * @param hi the high index (one above the highest actually processed).
      * @param d the number of characters in each String to be skipped.
      */
-    private static void sort(String[] a, int lo, int hi, int d, String[] chinese) {
+    private static void sort(String[] a, int lo, int hi, int d) {
         if (hi < lo+cutoff) InsertionSortMSD.sort(a, lo, hi, d);
         else {
             int[] count = new int[radix + 2];        // Compute frequency counts.
@@ -117,19 +114,17 @@ public class MSDRadixSort_Three {
             int j=0;
             for (int i = lo; i <= hi; i++) {  // Distribute.
                 int counter=charAt(a[i], d) + 1;
-                aux[count[counter]] = a[i];
-                chineseAux[count[counter]++] = chinese[i];
+                aux[count[counter]++] = a[i];
             }
 
 //             Copy back.
             for (int i = lo; i <= hi; i++) {
                 a[i] = aux[i-lo];
-                chinese[i] = chineseAux[i-lo];
 
             }
 
             for(int r=0;r<radix;r++){
-                sort(a, lo+count[r],lo+count[r+1]-1,d+1, chinese);
+                sort(a, lo+count[r],lo+count[r+1]-1,d+1);
             }
         }
     }
@@ -169,7 +164,7 @@ public class MSDRadixSort_Three {
             mapping.put(pinyinConvertedChinese[i], existingChinese);
         }
 
-        sort(pinyinConvertedChinese, shuffledChinese);
+        sort(pinyinConvertedChinese);
 
         writeSortedChinesePair(pinyinConvertedChinese);
     }
