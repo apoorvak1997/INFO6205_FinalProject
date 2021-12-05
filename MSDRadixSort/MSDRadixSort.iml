@@ -10,12 +10,44 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://$USER_HOME$/Downloads/pinyin4j-2.5.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.14.1" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/apache-log4j-1.2.17/site/apidocs" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/apache-log4j-1.2.17" />
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/apache-log4j-1.2.17/contribs/CekiGulcu" />
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/apache-log4j-1.2.17/contribs/Jamie Tsao" />
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/apache-log4j-1.2.17/contribs/JimMoore" />
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/apache-log4j-1.2.17/contribs/ThomasFenner" />
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/apache-log4j-1.2.17/src/main/java" />
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/apache-log4j-1.2.17/src/main/javadoc" />
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/apache-log4j-1.2.17/src/performance/java" />
+          <root url="jar://$USER_HOME$/Downloads/log4j-1.2.17.zip!/apache-log4j-1.2.17/tests/src/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/apache-log4j-1.2.17/log4j-1.2.17.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

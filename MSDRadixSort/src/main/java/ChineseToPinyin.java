@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public class ChineseToPinyin {
+public class ChineseToPinyin implements Comparable<ChineseToPinyin> {
     String pinyin;
     String chinese;
 
@@ -23,5 +23,12 @@ public class ChineseToPinyin {
 
     public void setPinyin(String pinyin) {
         this.pinyin = pinyin;
+    }
+
+
+
+    @Override
+    public int compareTo(ChineseToPinyin o) {
+        return this.pinyin.compareTo(o.pinyin);
     }
 }

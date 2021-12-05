@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class MSDRadixSortTest {
     @Test
-    public void testSortingFirstFive() throws Exception {
+    public void testSortingFirstFiveMSD() throws Exception {
         String[] shuffledChinese = {
                 "刘持平",
                 "洪文胜",
@@ -33,6 +33,7 @@ public class MSDRadixSortTest {
         }
 
         // implement sorting
+
         MSDRadixSort.msdRadixSortPair(pinyinConvertedChinese);
 
         // take the key form pairs after sorting
@@ -57,6 +58,7 @@ public class MSDRadixSortTest {
             shuffledList[i]= pinyinConvertedChinese[i].getPinyin();
         }
         // implement sorting
+
         MSDRadixSort.msdRadixSortPair(pinyinConvertedChinese);
 
         // take the key form pairs after sorting

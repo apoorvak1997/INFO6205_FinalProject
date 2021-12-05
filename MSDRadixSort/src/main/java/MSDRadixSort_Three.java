@@ -22,6 +22,7 @@ public class MSDRadixSort_Three {
     private  static String DestinationFileName = "sortedChinese";
     private  static String SourceFileName = "shuffledChinese";
     private static String[] aux;       // auxiliary array for distribution
+    private static Map<String, List<String>> mapping = new HashMap<>();
 
 
     static String[] readShuffledChinese(String path) throws IOException {
@@ -143,9 +144,13 @@ public class MSDRadixSort_Three {
 
     private static void writeSortedChinesePair(String[] pinyinConvertedChinese) throws FileNotFoundException {
         PrintWriter out = new PrintWriter(PATH+DestinationFileName+".txt");
-
-        for(int i=0;i<pinyinConvertedChinese.length;i++){
-            out.println(pinyinConvertedChinese[i]);
+        for (int i=0; i<pinyinConvertedChinese.length;i++){
+            List<String> stringList = mapping.get(pinyinConvertedChinese[i]);
+//            out.println(convertedNames[i]);
+            out.println(stringList.toArray()[0]);
+            if (stringList.size() > 1) {
+                stringList.remove(stringList.toArray()[0]);
+            }
         }
         out.close();
     }
@@ -157,7 +162,7 @@ public class MSDRadixSort_Three {
         // Convert Chinese to Pinyin
         String[] pinyinConvertedChinese = convertToPinyinPair(shuffledChinese);
 
-        Map<String, List<String>> mapping = new HashMap<>();
+
         for(int i=0;i< shuffledChinese.length;i++){
             if(!mapping.containsKey(pinyinConvertedChinese[i])){
                 List<String> chinese = new ArrayList<>();

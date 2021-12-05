@@ -14,7 +14,6 @@ public class InsertionSortChineseToPinyinMSD {
     private static boolean less(String v, String w, int d) {
         return v.substring(d).compareTo(w.substring(d)) < 0;
     }
-
     private static void swap(Object[] a, int j, int i) {
         Object temp = a[j];
         a[j] = a[i];
