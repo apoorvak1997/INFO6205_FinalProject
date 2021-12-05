@@ -14,13 +14,18 @@ import java.util.Map;
 public class MSDRadixSort_Three {
     private static final int radix = 256;
     private static final int cutoff = 15;
+
     private  static String PATH = "/Users/apoorvak/Desktop/PSA_SORTS/INFO6205_FinalProject/MSDRadixSort/src/main/resource/";
+
+   // private  static String PATH = "/Users/abhisheksatbhai/Desktop/my_neu/PSA/Project/INFO6205_FinalProject/MSDRadixSort/src/main/resource/";
+
     private  static String DestinationFileName = "sortedChinese";
     private  static String SourceFileName = "shuffledChinese";
     private static String[] aux;       // auxiliary array for distribution
 
 
     static String[] readShuffledChinese(String path) throws IOException {
+        System.out.println(path);
         BufferedReader in = null;
         String[] shuffledChinese  = new String[999998];
         try {
