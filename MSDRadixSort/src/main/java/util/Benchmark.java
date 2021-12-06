@@ -1,4 +1,4 @@
-package edu.neu.coe.info6205.util;
+package util;
 
 import java.util.function.Supplier;
 

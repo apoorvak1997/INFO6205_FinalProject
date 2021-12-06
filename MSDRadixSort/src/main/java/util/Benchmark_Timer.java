@@ -1,15 +1,11 @@
-/*
- * Copyright (c) 2018. Phasmid Software
- */
-
-package edu.neu.coe.info6205.util;
+package util;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
-import static edu.neu.coe.info6205.util.Utilities.formatWhole;
+import util.Utilities.*;
 
 /**
  * This class implements a simple Benchmark utility for measuring the running time of algorithms.
@@ -61,6 +57,10 @@ public class Benchmark_Timer<T> implements Benchmark<T> {
 
         // Timed phase
         return new Timer().repeat(m, supplier, function, fPre, fPost);
+    }
+
+    public static String formatWhole(int x) {
+        return String.format("%,d", x);
     }
 
     /**

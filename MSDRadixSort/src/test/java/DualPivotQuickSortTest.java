@@ -24,7 +24,7 @@ public class DualPivotQuickSortTest {
         };
 
         // Call our MSDRadixSort using Pair
-        ChineseToPinyin[] pinyinConvertedChinese = MSDRadixSort.convertToPinyinPair(shuffledChinese);
+        ChineseToPinyin[] pinyinConvertedChinese = preprocessing.convertToPinyinPair(shuffledChinese);
 
         // take the key form pairs before sorting
         String[] shuffledList = new String[pinyinConvertedChinese.length];
@@ -47,7 +47,7 @@ public class DualPivotQuickSortTest {
 
     @Test
     public void testSortingOrderingForEntireFile() throws Exception {
-        String[] shuffledChinese =  MSDRadixSort.readShuffledChinese("src/test/resource/shuffledChineseTest.txt");
+        String[] shuffledChinese =  preprocessing.readShuffledChinese("/Users/abhisheksatbhai/Desktop/my_neu/PSA/Project/INFO6205_FinalProject/MSDRadixSort/src/main/resource/shuffledChinese.txt", 999998);
 
         // Call our MSDRadixSort using Pair
         ChineseToPinyin[] pinyinConvertedChinese = MSDRadixSort.convertToPinyinPair(shuffledChinese);

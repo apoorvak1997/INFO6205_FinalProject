@@ -1,4 +1,4 @@
-package edu.neu.coe.info6205.util;
+package util;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -202,7 +202,7 @@ public class Timer {
      */
     private static double toMillisecs(long ticks) {
         // TO BE IMPLEMENTED
-       //double durationInMs =(double) ticks/1000000;
+        //double durationInMs =(double) ticks/1000000;
         //double durationInMs= (double)TimeUnit.NANOSECONDS.toMillis(ticks);
         double durationInMs =(double) TimeUnit.MILLISECONDS.convert(ticks,TimeUnit.NANOSECONDS);
         return durationInMs;
