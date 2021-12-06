@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a889e33c-03a4-4a86-8df1-10e57976f1ba" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/INFO6205_FinalProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/INFO6205_FinalProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -12,11 +13,18 @@
       <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/main/java/MSDRadixSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/MSDRadixSort/src/main/java/MSDRadixSort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/main/java/preprocessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/MSDRadixSort/src/main/java/preprocessing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/main/java/util/Benchmark_Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/MSDRadixSort/src/main/java/util/Benchmark_Timer.java" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/MSDRadixSort/src/main/java/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/main/java/preprocessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/MSDRadixSort/src/main/java/preprocessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/main/resource/sortedChinese.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MSDRadixSort/src/main/resource/sortedChinese.txt" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/test/java/DualPivotQuickSortStringsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MSDRadixSort/src/test/java/DualPivotQuickSortStringsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/test/java/DualPivotQuickSortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MSDRadixSort/src/test/java/DualPivotQuickSortTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/test/java/LSDRadixSortStringsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MSDRadixSort/src/test/java/LSDRadixSortStringsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/test/java/LSDRadixSortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MSDRadixSort/src/test/java/LSDRadixSortTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/test/java/MSDRadixSortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MSDRadixSort/src/test/java/MSDRadixSortTest.java" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/BenchmarkTimerMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/BenchmarkTimerMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/ChineseToPinyin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/ChineseToPinyin.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/DualPivotQuickSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/DualPivotQuickSort.class" afterDir="false" />
@@ -41,6 +49,12 @@
       <change beforePath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/util/Timer$TimerException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/util/Timer$TimerException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/util/Timer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/util/Timer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/util/Utilities.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/util/Utilities.class" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/MSDRadixSort/src/test/java/TestMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/MSDRadixSortTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/MSDRadixSortTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/preprocessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/INFO6205_FinalProject/preprocessing.class" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,29 +114,20 @@
       <recent name="util" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BenchmarkTimerMain">
-    <configuration name="BenchmarkTimerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="BenchmarkTimerMain" />
+  <component name="RunManager" selected="Application.Timer">
+    <configuration name="Timer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Timer" />
       <module name="INFO6205_FinalProject" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< Updated upstream
     <configuration name="DualPivotQuickSortStrings" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DualPivotQuickSortStrings" />
-      <module name="INFO6205_FinalProject" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="preprocessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="preprocessing" />
-      <module name="INFO6205_FinalProject" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+=======
     <configuration name="DualPivotQuickSortStringsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+>>>>>>> Stashed changes
       <module name="INFO6205_FinalProject" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DualPivotQuickSortStringsTest" />
@@ -131,7 +136,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< Updated upstream
+    <configuration name="preprocessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="preprocessing" />
+=======
     <configuration name="DualPivotQuickSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+>>>>>>> Stashed changes
       <module name="INFO6205_FinalProject" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DualPivotQuickSortTest" />
@@ -140,12 +150,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MSDRadixSortStringsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="INFO6205_FinalProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MSDRadixSortStringsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MSDRadixSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="INFO6205_FinalProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MSDRadixSortTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+<<<<<<< Updated upstream
         <item itemvalue="Application.BenchmarkTimerMain" />
         <item itemvalue="Application.preprocessing" />
+=======
+        <item itemvalue="Application.Timer" />
+        <item itemvalue="JUnit.MSDRadixSortTest" />
+        <item itemvalue="JUnit.MSDRadixSortStringsTest" />
+>>>>>>> Stashed changes
         <item itemvalue="JUnit.DualPivotQuickSortStringsTest" />
-        <item itemvalue="Application.DualPivotQuickSortStrings" />
         <item itemvalue="JUnit.DualPivotQuickSortTest" />
       </list>
     </recent_temporary>

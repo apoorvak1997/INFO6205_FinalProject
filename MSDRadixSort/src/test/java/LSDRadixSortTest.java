@@ -14,6 +14,12 @@ import static org.junit.Assert.*;
 
 public class LSDRadixSortTest {
     @Test
+    public void getwords() throws Exception {
+        String[] shuffledChinese =  preprocessing.readShuffledChinese("/Users/abhisheksatbhai/Desktop/my_neu/PSA/Project/INFO6205_FinalProject/MSDRadixSort/src/main/resource/shuffledChinese.txt", 999998);
+        assertEquals(shuffledChinese.length,999998);
+    }
+
+    @Test
     public void testSortingFirstFiveLSD() throws Exception {
         String[] shuffledChinese = {
                 "刘持平",
@@ -23,6 +29,35 @@ public class LSDRadixSortTest {
                 "高民政"
         };
 
+        // Call our MSDRadixSort using Pair
+        ChineseToPinyin[] pinyinConvertedChinese = MSDRadixSort.convertToPinyinPair(shuffledChinese);
+
+        // take the key form pairs before sorting
+        String[] shuffledList = new String[pinyinConvertedChinese.length];
+        for(int i=0;i<shuffledList.length;i++){
+            shuffledList[i]= pinyinConvertedChinese[i].getPinyin();
+        }
+
+        // implement sorting
+
+        LSDStringSortChineseToPinyin.sort(pinyinConvertedChinese);
+
+        // take the key form pairs after sorting
+        List<String> sortedList = new ArrayList<>();
+        for(int i=0;i<pinyinConvertedChinese.length;i++){
+            sortedList.add(pinyinConvertedChinese[i].getPinyin());
+        }
+
+        assertEquals(sortUsingPinyin(shuffledList),sortedList);
+    }
+
+    @Test
+    public void testSortingForSamePinyinWordsButDifferentChineseWords() throws Exception {
+        String[] shuffledChinese = {
+                "阿斌",
+                "阿滨",
+                "阿彬"
+        };
         // Call our MSDRadixSort using Pair
         ChineseToPinyin[] pinyinConvertedChinese = MSDRadixSort.convertToPinyinPair(shuffledChinese);
 
