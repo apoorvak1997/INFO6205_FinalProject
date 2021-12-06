@@ -24,8 +24,6 @@ public class preprocessing {
     }
 
     public static void preprocessing(String ChooseSort, String SortingType, int length) throws IOException {
-        System.out.println("choose sort 5: "+ChooseSort);
-
         Map<String, List<String>> mapping = new HashMap<>();
         // Read shuffled chinese
         String[] shuffledChinese = readShuffledChinese(PATH + SourceFileName + ".txt", length);
