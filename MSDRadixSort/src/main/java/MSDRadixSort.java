@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Locale;
 
 // Import Pinyin
-import javafx.util.Pair;
+//import javafx.util.Pair;
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;

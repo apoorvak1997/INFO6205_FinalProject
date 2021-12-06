@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class preprocessing {
-    private  static String PATH = "/Users/abhisheksatbhai/Desktop/my_neu/PSA/Project/INFO6205_FinalProject/MSDRadixSort/src/main/resource/";
+    private  static String PATH = "C:\\Users\\sneha\\OneDrive\\Documents\\Document\\PSA\\INFO6205_FinalProject\\MSDRadixSort\\src\\main\\resource\\";
     private  static String DestinationFileName = "sortedChinese";
     private  static String SourceFileName = "shuffledChinese";
 
@@ -80,12 +80,12 @@ public class preprocessing {
 
 
         // Write to file String or Pair
-        if (SortingType.equals("STRING")){
-            writeSortedChinese(pinyinConvertedChinese, mapping);
-        }
-        else if (SortingType.equals("PAIR")){
-            writeSortedChinesePair(pinyinConvertedChinesePair);
-        }
+//        if (SortingType.equals("STRING")){
+//            writeSortedChinese(pinyinConvertedChinese, mapping);
+//        }
+//        else if (SortingType.equals("PAIR")){
+//            writeSortedChinesePair(pinyinConvertedChinesePair);
+//        }
 
     }
     public static String[] readShuffledChinese(String path, int length) throws IOException {
@@ -154,24 +154,24 @@ public class preprocessing {
         return pinyinConvertedChinese;
     }
 
-    private static void writeSortedChinesePair(ChineseToPinyin[] pinyinConvertedChinese) throws FileNotFoundException {
-        PrintWriter out = new PrintWriter(PATH + DestinationFileName + ".txt");
+//    private static void writeSortedChinesePair(ChineseToPinyin[] pinyinConvertedChinese) throws FileNotFoundException {
+//        PrintWriter out = new PrintWriter(PATH + DestinationFileName + ".txt");
+//
+//        for(int i=0;i<pinyinConvertedChinese.length;i++){
+//            out.println(pinyinConvertedChinese[i].getChinese());
+//        }
+//        out.close();
+//    }
 
-        for(int i=0;i<pinyinConvertedChinese.length;i++){
-            out.println(pinyinConvertedChinese[i].getChinese());
-        }
-        out.close();
-    }
-
-    private static void writeSortedChinese(String[] pinyinConvertedChinese, Map<String, List<String>> mapping) throws FileNotFoundException {
-        PrintWriter out = new PrintWriter(PATH+DestinationFileName+".txt");
-        for (int i=0; i<pinyinConvertedChinese.length;i++){
-            List<String> stringList = mapping.get(pinyinConvertedChinese[i]);
-            out.println(stringList.toArray()[0]);
-            if (stringList.size() > 1) {
-                stringList.remove(stringList.toArray()[0]);
-            }
-        }
-        out.close();
-    }
+//    private static void writeSortedChinese(String[] pinyinConvertedChinese, Map<String, List<String>> mapping) throws FileNotFoundException {
+//        PrintWriter out = new PrintWriter(PATH+DestinationFileName+".txt");
+//        for (int i=0; i<pinyinConvertedChinese.length;i++){
+//            List<String> stringList = mapping.get(pinyinConvertedChinese[i]);
+//            out.println(stringList.toArray()[0]);
+//            if (stringList.size() > 1) {
+//                stringList.remove(stringList.toArray()[0]);
+//            }
+//        }
+//        out.close();
+//    }
 }

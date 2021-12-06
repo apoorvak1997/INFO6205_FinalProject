@@ -20,40 +20,8 @@ public class BenchmarkTimerMain {
         int runs=500;
         BufferedReader in = null;
         String[] myList = new String[999998];
-        try {
-            in = new BufferedReader(new FileReader("/Users/abhisheksatbhai/Desktop/my_neu/PSA/Project/INFO6205_FinalProject/MSDRadixSort/src/main/resource/shuffledChinese.txt"));
-            String str;
-            int i=0;
-            while ((str = in.readLine()) != null && i<=999997) {
-                myList[i]=str;
-                i++;
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (in != null) {
-                in.close();
-            }
-        }
 
 
-        Collator spCollator = Collator.getInstance(Locale.CHINESE);
-        String[] convertedNames = convertToPinyin(myList);
-        Map<String, List<String>> lookup = new HashMap<>();
-        for(int i=0;i<convertedNames.length;i++){
-            if(!lookup.containsKey(convertedNames[i])){
-                List<String> chinese = new ArrayList<>();
-                lookup.put(convertedNames[i],chinese );
-            }
-            List<String> existingChinese = lookup.get(convertedNames[i]);
-            existingChinese.add(myList[i]);
-
-        }
-
-
-        String[] sortThis = new String[myList.length];
 
         //sort(convertedNames);
 
@@ -92,7 +60,28 @@ public class BenchmarkTimerMain {
             MSDRadixSort_Three msd= new MSDRadixSort_Three();
 
 //
-            Benchmark_Timer<String[]> timer_r=new Benchmark_Timer<>("Benchmarking",null,(x)-> {
+            Benchmark_Timer<String[]> timer_r1=new Benchmark_Timer<>("Benchmarking",null,(x)-> {
+                try {
+                    preprocessing.preprocessing("LSDString", "STRING", 1000000);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            },null);
+            Benchmark_Timer<String[]> timer_r2=new Benchmark_Timer<>("Benchmarking",null,(x)-> {
+                try {
+                    preprocessing.preprocessing("LSDPair", "PAIR", 1000000);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            },null);
+            Benchmark_Timer<String[]> timer_r3=new Benchmark_Timer<>("Benchmarking",null,(x)-> {
+                try {
+                    preprocessing.preprocessing("LSDString", "STRING", 1000000);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            },null);
+            Benchmark_Timer<String[]> timer_r4=new Benchmark_Timer<>("Benchmarking",null,(x)-> {
                 try {
                     preprocessing.preprocessing("LSDString", "STRING", 1000000);
                 } catch (IOException e) {
@@ -110,14 +99,15 @@ public class BenchmarkTimerMain {
 //                    e.printStackTrace();
 //                }
 //            },null);
-        Supplier sup_random=() -> convertedNames;
+        Supplier sup_random=() -> myList;
 //
 //        Supplier sup_sorted=() -> array_sorted;
 //        Supplier sup_partial=() -> array_partial;
 
-            double time=timer_r.runFromSupplier(sup_random,0);
 
-           System.out.println("When n is "+n+" mean time is "+time+" for LSD");
+            double time=timer_r1.runFromSupplier(sup_random,0);
+
+           System.out.println("When n is "+1000000+" mean time is "+time+" for LSD");
 //        System.out.println();
 //        double time_random=timer_r.runFromSupplier(sup_random,runs);
 //
