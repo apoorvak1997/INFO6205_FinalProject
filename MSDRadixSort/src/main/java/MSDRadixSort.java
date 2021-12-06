@@ -25,52 +25,10 @@ public class MSDRadixSort {
      * @param a the array to be sorted.
      */
     public static void main(String args[]) throws IOException {
-        // Read shuffled chinese
-        String[] shuffledChinese =  readShuffledChinese(PATH+SourceFileName+".txt");
-
-        //put into ChineseToPinyin class with array:
-
-        // Convert Chinese to Pinyin
-        ChineseToPinyin[] pinyinConvertedChinese = convertToPinyinPair(shuffledChinese);
-
-        // Sort Pinyin using MSD Radix Sort, In Place sorting
-        msdRadixSortPair(pinyinConvertedChinese);
-
-        // Write to file
-        writeSortedChinesePair(pinyinConvertedChinese);
+        // runs for 1M names
+        preprocessing.preprocessing("MSDPair", "PAIR", 999998);
     }
 
-    private static void writeSortedChinesePair(ChineseToPinyin[] pinyinConvertedChinese) throws FileNotFoundException {
-        PrintWriter out = new PrintWriter(PATH+DestinationFileName+".txt");
-
-        for(int i=0;i<pinyinConvertedChinese.length;i++){
-            out.println(pinyinConvertedChinese[i].getChinese());
-        }
-        out.close();
-    }
-
-    static String[] readShuffledChinese(String path) throws IOException {
-        BufferedReader in = null;
-        String[] shuffledChinese  = new String[999997];
-        try {
-            in = new BufferedReader(new FileReader(path));
-            String name;
-            int i=0;
-            while ((name = in.readLine()) != null && i!=999997) {
-                shuffledChinese[i] = name;
-                i++;
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (in != null) {
-                in.close();
-            }
-        }
-        return shuffledChinese;
-    }
 
     public static ChineseToPinyin[] convertToPinyinPair(String[] shuffledChinese){
         ChineseToPinyin[] pinyinConvertedChinese = new ChineseToPinyin[shuffledChinese.length];
@@ -81,7 +39,8 @@ public class MSDRadixSort {
         return pinyinConvertedChinese;
     }
 
-    public static void sortchinese(String[] s) throws FileNotFoundException {
+    public static void sortchinese(String[] s) throws
+    FileNotFoundException {
         List<String> list = Arrays.asList(s);
 
 //        Collator spCollator = Collator.getInstance(Locale.CHINESE);
@@ -170,10 +129,6 @@ public class MSDRadixSort {
     private static final int radix = 256;
     private static final int cutoff = 15;
     private static ChineseToPinyin[] aux;       // auxiliary array for distribution
-//    private static String[] aux2;
-    private  static String PATH = "/Users/apoorvak/Desktop/PSA_SORTS/INFO6205_FinalProject/MSDRadixSort/src/main/resource/";
-    private  static String DestinationFileName = "sortedChinese";
-    private  static String SourceFileName = "shuffledChinese";
 
 }
 

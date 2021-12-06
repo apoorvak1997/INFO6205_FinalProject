@@ -7,9 +7,6 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
 import java.io.*;
 
 public class DualPivotQuickSort {
-    private  static String PATH = "/Users/apoorvak/Desktop/PSA_SORTS/INFO6205_FinalProject/MSDRadixSort/src/main/resource/";
-    private  static String DestinationFileName = "sortedChinese";
-    private  static String SourceFileName = "shuffledChinese";
 
     // quicksort the array a[] using dual-pivot quicksort
     public static void sort(ChineseToPinyin[] a) {
@@ -74,97 +71,10 @@ public class DualPivotQuickSort {
         return true;
     }
 
-
-
-    // print array to standard output
-//    private static void show(Comparable[] a) {
-//        for (int i = 0; i < a.length; i++) {
-//            StdOut.println(a[i]);
-//        }
-//    }
-
-    private static void writeSortedChinesePair(ChineseToPinyin[] pinyinConvertedChinese) throws FileNotFoundException {
-        PrintWriter out = new PrintWriter(PATH+DestinationFileName+".txt");
-
-        for(int i=0;i<pinyinConvertedChinese.length;i++){
-            out.println(pinyinConvertedChinese[i].getChinese());
-        }
-        out.close();
-    }
-
-    private static ChineseToPinyin[] convertToPinyinPair(String[] shuffledChinese) {
-        ChineseToPinyin[] pinyinConvertedChinese = new ChineseToPinyin[shuffledChinese.length];
-        for (int i=0; i<shuffledChinese.length;i++){
-            ChineseToPinyin pair = new ChineseToPinyin(toPinYin(shuffledChinese[i]), shuffledChinese[i]);
-            pinyinConvertedChinese[i] = pair;
-        }
-        return pinyinConvertedChinese;
-    }
-    public static String toPinYin(String string){
-        char[] c = string.toCharArray();
-        StringBuffer stringBuffer = new StringBuffer();
-        for(int i = 0; i< c.length; i++){
-            stringBuffer.append(toChar(c[i]));
-        }
-        return stringBuffer.toString();
-    }
-
-    private static String toChar(char c){
-        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
-        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
-        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
-//        format.setVCharType(HanyuPinyinVCharType.WITH_V);
-        try{
-            String[] pinYin = PinyinHelper.toHanyuPinyinStringArray(c, format);
-            if(pinYin != null){
-                return pinYin[0];
-            }
-        }
-        catch(BadHanyuPinyinOutputFormatCombination ex){
-            ex.printStackTrace();
-        }
-        return String.valueOf(c);
-    }
-
-    private static String[] readShuffledChinese(String path) throws IOException {
-        BufferedReader in = null;
-        String[] shuffledChinese  = new String[999998];
-        try {
-            in = new BufferedReader(new FileReader(path));
-            String name;
-            int i=0;
-            while ((name = in.readLine()) != null && i!=999998) {
-                shuffledChinese[i] = name;
-                i++;
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (in != null) {
-                in.close();
-            }
-        }
-        return shuffledChinese;
-    }
-
-
     // Read strings from standard input, sort them, and print.
     public static void main(String[] args) throws IOException {
-
-        String[] shuffledChinese = readShuffledChinese(PATH + SourceFileName + ".txt");
-
-        //put into ChineseToPinyin class with array:
-
-        // Convert Chinese to Pinyin
-        ChineseToPinyin[] pinyinConvertedChinese = convertToPinyinPair(shuffledChinese);
-
-        // Sort Pinyin using MSD Radix Sort, In Place sorting
-        sort(pinyinConvertedChinese);
-
-        // Write to file
-        writeSortedChinesePair(pinyinConvertedChinese);
+        // runs for 1M names
+        preprocessing.preprocessing("DPQPair", "PAIR", 999998);
     }
 
 }

@@ -28,92 +28,10 @@ public class LSDStringSort {
 
     private final int ASCII_RANGE = 256;
 public static void main(String[] args) throws IOException {
-    BufferedReader in = null;
-    String[] myList = new String[999998];
-    try {
-        in = new BufferedReader(new FileReader("C:\\Users\\sneha\\IdeaProjects\\INFO6205\\src\\main\\java\\edu\\neu\\coe\\info6205\\sort\\counting\\ShuffledChinese"));
-        String str;
-        int i=0;
-        while ((str = in.readLine()) != null && i<=999997) {
-            myList[i]=str;
-            i++;
-        }
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
-    } finally {
-        if (in != null) {
-            in.close();
-        }
-    }
-
-
-    Collator spCollator = Collator.getInstance(Locale.CHINESE);
-    String[] convertedNames = convertToPinyin(myList);
-    Map<String, List<String>> lookup = new HashMap<>();
-    for(int i=0;i<convertedNames.length;i++){
-        if(!lookup.containsKey(convertedNames[i])){
-            List<String> chinese = new ArrayList<>();
-            lookup.put(convertedNames[i],chinese );
-        }
-        List<String> existingChinese = lookup.get(convertedNames[i]);
-        existingChinese.add(myList[i]);
-
-    }
-
-
-    String[] sortThis = new String[myList.length];
-
-    sort(convertedNames);
-
-    PrintWriter out = new PrintWriter("output.txt");
-    //Set<String> set = mapping.get(convertedNames[0]);
-    //out.println("   " +set.toArray()[0]);
-    for (int i=0; i<convertedNames.length;i++){
-        List<String> stringList = lookup.get(convertedNames[i]);
-//            out.println(convertedNames[i]);
-        out.println(stringList.toArray()[0]);
-        if (stringList.size() > 1) {
-            stringList.remove(stringList.toArray()[0]);
-        }
-    }
-    out.close();
+    // runs for 1M names
+    preprocessing.preprocessing("LSDString", "STRING", 999998);
 }
-    public static String[] convertToPinyin(String[] c){
-        String[] convertedNames = new String[c.length];
-        for (int i=0; i<c.length;i++){
-            convertedNames[i] = toPinYin(c[i]);
-        }
-        return convertedNames;
-    }
 
-
-    public static String toPinYin(String string){
-        char[] c = string.toCharArray();
-        StringBuffer stringBuffer = new StringBuffer();
-        for(int i = 0; i< c.length; i++){
-            stringBuffer.append(toChar(c[i]));
-        }
-        return stringBuffer.toString();
-    }
-
-    private static String toChar(char c){
-        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
-        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
-        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
-//        format.setVCharType(HanyuPinyinVCharType.WITH_V);
-        try{
-            String[] pinYin = PinyinHelper.toHanyuPinyinStringArray(c, format);
-            if(pinYin != null){
-                return pinYin[0];
-            }
-        }
-        catch(BadHanyuPinyinOutputFormatCombination ex){
-            ex.printStackTrace();
-        }
-        return String.valueOf(c);
-    }
     /**
      * findMaxLength method returns maximum length of all available strings in an array
      *

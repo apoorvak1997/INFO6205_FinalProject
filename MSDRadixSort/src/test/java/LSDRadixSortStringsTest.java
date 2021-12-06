@@ -24,7 +24,7 @@ public class LSDRadixSortStringsTest {
         };
 
         // Call our MSDRadixSort using Pair
-        String[] pinyinConvertedChinese = LSDStringSort.convertToPinyin(shuffledChinese);
+        String[] pinyinConvertedChinese = preprocessing.convertToPinyin(shuffledChinese);
 
         // take the key form pairs before sorting
         String[] shuffledList = new String[pinyinConvertedChinese.length];
@@ -47,13 +47,13 @@ public class LSDRadixSortStringsTest {
 
     @Test
     public void testSortingOrderingForEntireFile() throws Exception {
-        String[] shuffledChinese =  MSDRadixSort.readShuffledChinese("src/test/resource/shuffledChineseTest.txt");
+        String[] shuffledChinese =  preprocessing.readShuffledChinese("/Users/abhisheksatbhai/Desktop/my_neu/PSA/Project/INFO6205_FinalProject/MSDRadixSort/src/main/resource/shuffledChinese.txt", 999998);
 
         // Call our MSDRadixSort using Pair
-        String[] pinyinConvertedChinese = LSDStringSort.convertToPinyin(shuffledChinese);
+        String[] pinyinConvertedChinese = preprocessing.convertToPinyin(shuffledChinese);
 
         // take the key form pairs before sorting
-        String[] shuffledList = new String[pinyinConvertedChinese.length];
+        String[] shuffledList = new String[999998];
         for(int i=0;i<shuffledList.length;i++){
             shuffledList[i]= pinyinConvertedChinese[i];
         }
@@ -63,7 +63,7 @@ public class LSDRadixSortStringsTest {
 
         // take the key form pairs after sorting
         List<String> sortedList = new ArrayList<>();
-        for(int i=0;i<pinyinConvertedChinese.length;i++){
+        for(int i=0;i<999998;i++){
             sortedList.add(pinyinConvertedChinese[i]);
         }
 
